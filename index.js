@@ -1,3 +1,5 @@
+const ObjectID = require('mongodb').ObjectID
+
 function padLeft(input, length, padding) {
 	var result = input
 	while(result.length < length) {
@@ -6,7 +8,15 @@ function padLeft(input, length, padding) {
 	return result
 }
 
+function getObjectID(id){
+  if (typeof(id) === 'string'){
+    return new ObjectID(id)
+  }
+  return id
+}
+
 
 module.exports = {
-	padLeft: padLeft
+	padLeft: padLeft,
+	getObjectID: getObjectID
 }
